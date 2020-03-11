@@ -7,4 +7,4 @@ services:
       - /app/node_modules
     ports:
       - "8081:8080"
-    command: yarn run serve
+    command: yarn serve
