@@ -1,14 +1,7 @@
 <template>
   <v-app>
-    <v-navigation-drawer app right clipped v-model="drawer" mobile-break-point="960">
-      <v-layout justify-center>
-        <p>test</p>
-      </v-layout>
-    </v-navigation-drawer>
-    <v-app-bar app clipped-right color="primary">
-      <v-spacer></v-spacer>
-      <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
-    </v-app-bar>
+    <Header></Header>
+    <Sidebar></Sidebar>
     <v-content>
       <v-container>
         <v-layout>
@@ -24,12 +17,14 @@
 
 <script lang="ts">
 import Vue from "vue";
+import Sidebar from "@/components/Sidebar";
+import Header from "@/components/Header";
 
 export default Vue.extend({
   name: "App",
-
-  data: () => ({
-    drawer: null
-  })
+  components: {
+    Sidebar,
+    Header
+  }
 });
 </script>
