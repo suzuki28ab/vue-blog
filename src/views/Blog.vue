@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div :class="$style.blog">
     <PostTitle></PostTitle>
     <PostTitle></PostTitle>
   </div>
@@ -16,3 +16,9 @@ export default Vue.extend({
   }
 });
 </script>
+
+<style module>
+.blog {
+  background-color: rgb(236, 253, 238);
+}
+</style>

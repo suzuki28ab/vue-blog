@@ -1,6 +1,6 @@
 <template>
   <v-app>
-    <v-navigation-drawer app right clipped v-model="drawer">
+    <v-navigation-drawer app right clipped v-model="drawer" mobile-break-point="960">
       <v-layout justify-center>
         <p>test</p>
       </v-layout>
@@ -13,7 +13,7 @@
       <v-container>
         <v-layout>
           <v-flex lg2></v-flex>
-          <v-flex lg10 md12 sm12 xs12>
+          <v-flex lg10 sm12>
             <router-view></router-view>
           </v-flex>
         </v-layout>
