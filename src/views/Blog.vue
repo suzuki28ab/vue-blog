@@ -1,27 +1,20 @@
 <template>
-  <div :class="$style.blog">
-    <Maincomponent></Maincomponent>
-    <Sidebarcomponent></Sidebarcomponent>
+  <div>
+    <PostTitle></PostTitle>
+    <PostTitle></PostTitle>
   </div>
 </template>
 
 <script lang="ts">
 import Vue from "vue";
-import Maincomponent from "../components/blog/Maincomponent";
-import Sidebarcomponent from "../components/blog/Sidebarcomponent";
+import PostTitle from "@/components/blog/PostTitle"
 
 export default Vue.extend({
   name: "Blog",
   components: {
-    Maincomponent,
-    Sidebarcomponent
+    PostTitle
   }
 });
 </script>
 
-<style module>
-.blog {
-  display: flex;
-  justify-content: space-around;
-}
-</style>
+

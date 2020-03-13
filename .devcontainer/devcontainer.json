@@ -1,0 +1,20 @@
+{
+  "dockerComposeFile": [
+    "../docker-compose.yml",
+    "docker-compose.extend.yml"
+  ],
+  "service": "vue",
+  "workspaceFolder": "/app",
+  "extensions": [
+    "msjsdiag.debugger-for-chrome",
+    "octref.vetur",
+    "dbaeumer.vscode-eslint",
+    "editorconfig.editorconfig",
+    "wraith13.background-phi-colors",
+    "hookyqr.beautify",
+    "streetsidesoftware.code-spell-checker",
+    "lihui.vs-color-picker",
+    "eamodio.gitlens",
+  ],
+  "postCreateCommand": "apt-get update && apt-get install -y git"
+}
