@@ -1,17 +1,19 @@
 <template>
   <v-app>
-    <v-navigation-drawer app right clipped v-model="drawer"
-      >test</v-navigation-drawer
-    >
+    <v-navigation-drawer app right clipped v-model="drawer">
+      <v-layout justify-center>
+        <p>test</p>
+      </v-layout>
+    </v-navigation-drawer>
     <v-app-bar app clipped-right color="primary">
       <v-spacer></v-spacer>
       <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
     </v-app-bar>
-    <v-content app>
+    <v-content>
       <v-container>
         <v-layout>
-          <v-flex md2> </v-flex>
-          <v-flex md10 sm12>
+          <v-flex lg2></v-flex>
+          <v-flex lg10 md12 sm12 xs12>
             <router-view></router-view>
           </v-flex>
         </v-layout>

@@ -7,7 +7,7 @@
 
 <script lang="ts">
 import Vue from "vue";
-import PostTitle from "@/components/blog/PostTitle"
+import PostTitle from "@/components/blog/PostTitle";
 
 export default Vue.extend({
   name: "Blog",
@@ -16,5 +16,3 @@ export default Vue.extend({
   }
 });
 </script>
-
-
