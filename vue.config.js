@@ -1,9 +1,10 @@
 module.exports = {
   devServer: {
     watchOptions: {
-      ignored: /node_modules/,
+      ignored: {},
       aggregateTimeout: 300,
       poll: 3000
     }
-  }
-}
+  },
+  transpileDependencies: ["vuetify"]
+};
