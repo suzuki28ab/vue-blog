@@ -1,7 +1,9 @@
 <template>
   <div :class="$style.post_title">
-    <h2>title</h2>
-    <p>content</p>
+    <router-link :to="{ name: 'BlogShow', params: { id: post.id } }" tag="div">
+      <h2>{{ post.title }}</h2>
+      <p>{{ post.content }}</p>
+    </router-link>
   </div>
 </template>
 
@@ -9,7 +11,8 @@
 import Vue from "vue";
 
 export default Vue.extend({
-  name: "PostTitle"
+  name: "PostTitle",
+  props: ["post"]
 });
 </script>
 

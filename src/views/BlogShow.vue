@@ -3,11 +3,16 @@
     <Appbar></Appbar>
     <v-content>
       <v-container>
-        <v-layout justify-end>
+        <v-layout>
+          <v-flex lg2>
+            {{ message }}
+            <p>
+              <button @click="increment">UP</button>
+            </p>
+            <h1>Count:{{ count }}</h1>
+          </v-flex>
           <v-flex lg10 sm12>
-            <div v-for="post in posts" :key="post">
-              <PostTitle :post="post"></PostTitle>
-            </div>
+            <p>show id = {{ this.$route.params["id"] }}</p>
           </v-flex>
         </v-layout>
       </v-container>
@@ -18,10 +23,9 @@
 <script lang="ts">
 import Vue from "vue";
 import Appbar from "@/components/Appbar";
-import PostTitle from "@/components/blog/PostTitle";
 
 export default Vue.extend({
-  name: "Blog",
+  name: "BlogShow",
   methods: {
     increment: function() {
       this.$store.commit("test/increment");
@@ -33,14 +37,10 @@ export default Vue.extend({
     },
     count: function() {
       return this.$store.state.test.count;
-    },
-    posts: function() {
-      return this.$store.state.test.posts;
     }
   },
   components: {
-    Appbar,
-    PostTitle
+    Appbar
   }
 });
 </script>
