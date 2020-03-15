@@ -1,7 +1,6 @@
 <template>
   <div>
-    <Header></Header>
-    <Sidebar></Sidebar>
+    <Appbar></Appbar>
     <v-content>
       <v-container>
         <v-layout>
@@ -18,15 +17,13 @@
 
 <script lang="ts">
 import Vue from "vue";
-import Sidebar from "@/components/Sidebar";
-import Header from "@/components/Header";
+import Appbar from "@/components/Appbar";
 import PostTitle from "@/components/blog/PostTitle";
 
 export default Vue.extend({
   name: "Blog",
   components: {
-    Sidebar,
-    Header,
+    Appbar,
     PostTitle
   }
 });
