@@ -1,4 +1,4 @@
-import firebase from "@/plugins/firebase;
+import firebase from "@/plugins/firebase";
 
 export const posts = {
   namespaced: true,
@@ -6,15 +6,23 @@ export const posts = {
     posts: []
   },
   mutations: {
-    addPosts(state, post) {
-      state.comments.push(post)
+    setPosts(state, post) {
+      state.posts.push(post)
     },
+    resetPosts(state) {
+      state.posts = [];
+    }
   },
   actions: {
-    getPosts: function ({ commit }) {
-      firebase.firestore().collection('posts').get().then(snapshot => {
-        snapshot.forEach(doc => commit('addPosts', doc.data()))
-      })
+    getPosts({ commit }) {
+      firebase.firestore().collection('posts').get()
+        .then(snapshot => {
+          snapshot.forEach(doc => commit('setPosts', doc.data()))
+        })
+    },
+    removePosts(context) {
+      context.commit('resetPosts')
     }
+
   }
 }

@@ -5,7 +5,7 @@
       <v-container>
         <v-layout justify-end>
           <v-flex lg10 sm12>
-            <div v-for="post in posts" :key="post">
+            <div v-for="post in posts" :key="post.id">
               <PostTitle :post="post"></PostTitle>
             </div>
           </v-flex>
@@ -23,20 +23,21 @@ import PostTitle from "@/components/blog/PostTitle";
 export default Vue.extend({
   name: "Blog",
   methods: {
-    increment: function() {
+    increment() {
       this.$store.commit("test/increment");
     }
   },
   computed: {
-    message: function() {
-      return this.$store.state.test.message;
-    },
-    count: function() {
-      return this.$store.state.test.count;
-    },
-    posts: function() {
-      return this.$store.state.test.posts;
+    posts() {
+      return this.$store.state.posts.posts;
     }
+  },
+  created() {
+    this.$store.dispatch("posts/getPosts");
+  },
+  destroyed() {
+    this.$store.dispatch("posts/removePosts");
+    this.$el.remove();
   },
   components: {
     Appbar,
