@@ -8,9 +8,6 @@ export const posts = {
   mutations: {
     setPosts(state, post) {
       state.posts.push(post)
-    },
-    resetPosts(state) {
-      state.posts = [];
     }
   },
   actions: {
@@ -19,10 +16,6 @@ export const posts = {
         .then(snapshot => {
           snapshot.forEach(doc => commit('setPosts', doc.data()))
         })
-    },
-    removePosts(context) {
-      context.commit('resetPosts')
     }
-
   }
 }

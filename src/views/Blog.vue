@@ -33,11 +33,9 @@ export default Vue.extend({
     }
   },
   created() {
-    this.$store.dispatch("posts/getPosts");
-  },
-  destroyed() {
-    this.$store.dispatch("posts/removePosts");
-    this.$el.remove();
+    if (this.$store.state.posts.posts.length == 0) {
+      this.$store.dispatch("posts/getPosts");
+    }
   },
   components: {
     Appbar,
