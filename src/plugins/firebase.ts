@@ -1,5 +1,6 @@
 import firebase from "firebase/app";
 import "firebase/firestore";
+import "firebase/auth"
 
 const config = {
   apiKey: "AIzaSyDkR5CbuswO3gyx_pfBaow4YtKsPsCOXoE",
@@ -12,6 +13,16 @@ const config = {
   measurementId: "G-QHZ4QDG8P5"
 };
 
-firebase.initializeApp(config);
-firebase.firestore();
-export default firebase;
+const authConfig = {
+  signInSuccessUrl: "/test",
+  signInOptions: [
+    firebase.auth.EmailAuthProvider.PROVIDER_ID
+  ]
+};
+
+const app = firebase.initializeApp(config);
+const auth = firebase.auth();
+const db = app.firestore();
+
+export default app;
+export { auth, db };

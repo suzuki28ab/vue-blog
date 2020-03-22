@@ -1,4 +1,4 @@
-import firebase from "@/plugins/firebase";
+import { db } from "@/plugins/firebase";
 
 export const posts = {
   namespaced: true,
@@ -12,7 +12,7 @@ export const posts = {
   },
   actions: {
     getPosts({ commit }) {
-      firebase.firestore().collection('posts').get()
+      db.collection('posts').get()
         .then(snapshot => {
           snapshot.forEach(doc => commit('setPosts', doc.data()))
         })

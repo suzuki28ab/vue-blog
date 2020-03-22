@@ -1,12 +1,18 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
+import NotFound from "../views/NotFound.vue";
 import Home from "../views/Home.vue";
 import Blog from "../views/Blog.vue";
 import BlogShow from "../views/BlogShow.vue";
+import Login from "../views/Login.vue";
 
 Vue.use(VueRouter);
 
 const routes = [
+  {
+    path: "*",
+    component: NotFound
+  },
   {
     path: "/",
     name: "Home",
@@ -21,6 +27,11 @@ const routes = [
     path: "/blog/:id",
     name: "BlogShow",
     component: BlogShow
+  },
+  {
+    path: "/admin/login",
+    name: "Login",
+    component: Login
   }
 ];
 
