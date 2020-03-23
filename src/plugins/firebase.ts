@@ -13,13 +13,6 @@ const config = {
   measurementId: "G-QHZ4QDG8P5"
 };
 
-const authConfig = {
-  signInSuccessUrl: "/test",
-  signInOptions: [
-    firebase.auth.EmailAuthProvider.PROVIDER_ID
-  ]
-};
-
 const app = firebase.initializeApp(config);
 const auth = firebase.auth();
 const db = app.firestore();
