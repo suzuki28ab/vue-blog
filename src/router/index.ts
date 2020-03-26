@@ -4,13 +4,13 @@ import { auth } from "@/plugins/firebase";
 import NotFound from "../views/NotFound.vue";
 import Home from "../views/Home.vue";
 import Blog from "../views/blog/Blog.vue";
-import BlogShow from "../views/blog/Show.vue";
 import BlogIndex from "../views/blog/Index.vue";
-import Admin from "../views/admin/Admin.vue";
-import AdminTop from "../views/admin/Top.vue";
-import Login from "../views/Login.vue";
 
 Vue.use(VueRouter);
+
+function loadView(view: string) {
+  return () => import(`@/views/${view}.vue`);
+}
 
 const routes = [
   {
@@ -25,7 +25,7 @@ const routes = [
   {
     path: "/login",
     name: "Login",
-    component: Login
+    component: loadView('Login')
   },
   {
     path: "/blog",
@@ -39,19 +39,24 @@ const routes = [
       {
         path: ":id",
         name: "BlogShow",
-        component: BlogShow
+        component: loadView('blog/Show')
       }
     ]
   },
   {
     path: "/admin",
-    component: Admin,
+    component: loadView('admin/Admin'),
     meta: { requiresAuth: true },
     children: [
       {
         path: '',
         name: "AdminTop",
-        component: AdminTop
+        component: loadView('admin/Top')
+      },
+      {
+        path: 'post',
+        name: "AdminPost",
+        component: loadView('admin/Post')
       }
     ]
   }

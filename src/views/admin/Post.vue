@@ -1,0 +1,16 @@
+<template>
+  <v-simple-table>
+    <thead>
+      <tr>
+        <th>test</th>
+        <th>test2</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>test1</td>
+        <td>test2</td>
+      </tr>
+    </tbody>
+  </v-simple-table>
+</template>

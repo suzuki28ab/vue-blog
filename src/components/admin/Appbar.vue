@@ -13,7 +13,7 @@
         <v-divider></v-divider>
 
         <v-list nav>
-          <v-list-item v-for="navList in navLists" :key="navList.name">
+          <v-list-item v-for="navList in navLists" :key="navList.name" :to="{ name: navList.link }">
             <v-list-item-icon>
               <v-icon small>{{ navList.icon }}</v-icon>
             </v-list-item-icon>
@@ -33,7 +33,7 @@ export default Vue.extend({
   name: "Header",
   data: () => ({
     drawer: null,
-    navLists: [{ name: "投稿", icon: "fab fa-blogger-b" }]
+    navLists: [{ name: "投稿", icon: "fab fa-blogger-b", link: "AdminPost" }]
   })
 });
 </script>
