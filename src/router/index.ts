@@ -57,6 +57,11 @@ const routes = [
         path: 'post',
         name: "AdminPost",
         component: loadView('admin/Post')
+      },
+      {
+        path: 'post_new',
+        name: "AdminPostNew",
+        component: loadView('admin/PostNew')
       }
     ]
   }

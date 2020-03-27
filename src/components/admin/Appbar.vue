@@ -10,6 +10,7 @@
             <v-list-item-title class="title">設定項目</v-list-item-title>
           </v-list-item-content>
         </v-list-item>
+
         <v-divider></v-divider>
 
         <v-list nav>
@@ -33,7 +34,10 @@ export default Vue.extend({
   name: "Header",
   data: () => ({
     drawer: null,
-    navLists: [{ name: "投稿", icon: "fab fa-blogger-b", link: "AdminPost" }]
+    navLists: [
+      { name: "新規投稿", icon: "fas fa-blog", link: "AdminPostNew" },
+      { name: "投稿一覧/編集", icon: "fab fa-blogger-b", link: "AdminPost" }
+    ]
   })
 });
 </script>
