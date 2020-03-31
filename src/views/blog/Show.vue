@@ -1,15 +1,9 @@
 <template>
   <v-container>
     <v-layout>
-      <v-flex lg2>
-        {{ message }}
-        <p>
-          <button @click="increment">UP</button>
-        </p>
-        <h1>Count:{{ count }}</h1>
-      </v-flex>
+      <v-flex lg2></v-flex>
       <v-flex lg10 sm12>
-        <p>show id = {{ this.$route.params["id"] }}</p>
+        <Markdown :body="post.content"></Markdown>
       </v-flex>
     </v-layout>
   </v-container>
@@ -17,21 +11,20 @@
 
 <script lang="ts">
 import Vue from "vue";
+import Markdown from "@/components/blog/Markdown";
 
 export default Vue.extend({
   name: "BlogShow",
-  methods: {
-    increment: function() {
-      this.$store.commit("test/increment");
+  computed: {
+    post() {
+      return this.$store.state.posts.post;
     }
   },
-  computed: {
-    message: function() {
-      return this.$store.state.test.message;
-    },
-    count: function() {
-      return this.$store.state.test.count;
-    }
+  created() {
+    this.$store.dispatch("posts/getPost", this.$route.params.id);
+  },
+  components: {
+    Markdown
   }
 });
 </script>

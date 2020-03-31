@@ -2,6 +2,11 @@
   <div>
     <v-app-bar app clipped-left color="primary">
       <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
+      <v-spacer></v-spacer>
+      <v-toolbar-items>
+        <v-btn text>Button</v-btn>
+        <v-btn text :to="{ name: 'BlogIndex' }">サイトへ</v-btn>
+      </v-toolbar-items>
     </v-app-bar>
     <v-navigation-drawer app clipped v-model="drawer" mobile-break-point="960">
       <v-container>
