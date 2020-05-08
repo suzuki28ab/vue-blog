@@ -12,16 +12,20 @@
 <script lang="ts">
 import Vue from "vue";
 import Markdown from "@/components/blog/Markdown";
+import { db } from "@/plugins/firebase";
 
 export default Vue.extend({
   name: "BlogShow",
-  computed: {
-    post() {
-      return this.$store.state.posts.post;
-    }
-  },
+  data: () => ({
+    post: {}
+  }),
   created() {
-    this.$store.dispatch("posts/getPost", this.$route.params.id);
+    db.collection("posts")
+      .doc(this.$route.params.id)
+      .get()
+      .then(doc => {
+        this.post = doc.data();
+      });
   },
   components: {
     Markdown

@@ -1,5 +1,7 @@
 <template>
-  <div v-html="compileMarkdown"></div>
+  <div>
+    <div v-html="compileMarkdown()"></div>
+  </div>
 </template>
 
 <script lang="ts">
@@ -9,7 +11,7 @@ import marked from "marked";
 export default Vue.extend({
   name: "Markdown",
   props: ["body"],
-  computed: {
+  methods: {
     compileMarkdown() {
       return marked(this.body);
     }
