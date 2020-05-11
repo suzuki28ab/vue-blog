@@ -2,7 +2,7 @@
   <v-container>
     <v-text-field label="title" v-model="title"></v-text-field>
     <v-select :items="categories" v-model="category" label="category"></v-select>
-    <mavon-editor language="ja" v-model="content" :class="$style.editor"></mavon-editor>
+    <mavon-editor language="ja" v-model="content" @imgAdd="imgAdd" ref="md" :class="$style.editor"></mavon-editor>
     <v-btn @click="save" :class="$style.save">save</v-btn>
   </v-container>
 </template>
@@ -10,7 +10,7 @@
 <script lang="ts">
 import Vue from "vue";
 import "@/plugins/mavon-editor";
-import { db } from "@/plugins/firebase";
+import { db, storage } from "@/plugins/firebase";
 
 export default Vue.extend({
   name: "PostNew",
@@ -34,6 +34,20 @@ export default Vue.extend({
         })
         .catch(function(error) {
           console.error("Error writing document: ", error);
+        });
+    },
+    imgAdd: function(pos, $file) {
+      const storageRef = storage.ref();
+      const fileRef = storageRef.child($file.name);
+      fileRef
+        .put($file)
+        .then(snapshot => {
+          return snapshot.ref.getDownloadURL();
+        })
+        .then(url => {
+          console.log(url);
+          this.$refs.md.$img2Url(pos, url);
+          return url;
         });
     }
   },
