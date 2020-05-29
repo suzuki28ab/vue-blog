@@ -1,9 +1,11 @@
 <template>
-  <div>
+  <div :class="$style.back">
     <Appbar></Appbar>
-    <v-content>
-      <router-view></router-view>
-    </v-content>
+    <div style="height: 100%">
+      <v-content style="height: 100%">
+        <router-view></router-view>
+      </v-content>
+    </div>
   </div>
 </template>
 
@@ -23,3 +25,11 @@ export default Vue.extend({
   }
 });
 </script>
+
+<style module>
+.back {
+  width: 100%;
+  height: 100%;
+  background-color: rgb(246, 248, 253);
+}
+</style>

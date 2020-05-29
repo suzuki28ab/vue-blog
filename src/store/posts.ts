@@ -16,8 +16,8 @@ export const posts = {
         .then(snapshot => {
           snapshot.forEach(doc => {
             const id = doc.id
-            const { title, content, createdAt } = doc.data()
-            commit("setPosts", { id, title, content, createdAt })
+            const { title, category, tags, content, createdAt } = doc.data()
+            commit("setPosts", { id, title, category, tags, content, createdAt })
           })
         });
     }

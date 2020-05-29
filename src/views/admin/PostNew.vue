@@ -2,6 +2,7 @@
   <v-container>
     <v-text-field label="title" v-model="title"></v-text-field>
     <v-select :items="categories" v-model="category" label="category"></v-select>
+    <v-select :items="tagList" v-model="tags" label="tags" multiple></v-select>
     <mavon-editor language="ja" v-model="content" @imgAdd="imgAdd" ref="md" :class="$style.editor"></mavon-editor>
     <v-btn @click="save" :class="$style.save">save</v-btn>
   </v-container>
@@ -18,7 +19,9 @@ export default Vue.extend({
     title: "",
     content: "",
     categories: [],
-    category: ""
+    tagList: [],
+    category: "",
+    tags: []
   }),
   methods: {
     save: function() {
@@ -27,6 +30,7 @@ export default Vue.extend({
           title: this.title,
           content: this.content,
           category: this.category,
+          tags: this.tags,
           createdAt: new Date()
         })
         .then(function() {
@@ -57,6 +61,13 @@ export default Vue.extend({
       .then(snapshot => {
         snapshot.forEach(doc => {
           this.categories.push(doc.data().name);
+        });
+      });
+    db.collection("tags")
+      .get()
+      .then(snapshot => {
+        snapshot.forEach(doc => {
+          this.tagList.push(doc.data().name);
         });
       });
   }

@@ -19,5 +19,14 @@ const auth = firebase.auth();
 const db = app.firestore();
 const storage = firebase.storage();
 
+const formatTimeStamp = (timestamp) => {
+  const d = new Date(timestamp.seconds * 1000);
+  const year = d.getFullYear();
+  const month = (`0${d.getMonth() + 1}`).slice(-2);
+  const day = (`0${d.getDate()}`).slice(-2);
+
+  return `${year}/${month}/${day}`;
+}
+
 export default app;
-export { auth, db, storage };
+export { auth, db, storage, formatTimeStamp };

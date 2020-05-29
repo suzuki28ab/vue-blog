@@ -37,6 +37,11 @@ const routes = [
         component: BlogIndex
       },
       {
+        path: 'result',
+        name: "BlogResult",
+        component: loadView('blog/Result')
+      },
+      {
         path: ":id",
         name: "BlogShow",
         component: loadView('blog/Show')

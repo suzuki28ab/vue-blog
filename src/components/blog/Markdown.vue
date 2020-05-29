@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div v-html="compileMarkdown()"></div>
+    <div v-html="compileMarkdown()" :class="$style.markdown"></div>
   </div>
 </template>
 
@@ -18,3 +18,9 @@ export default Vue.extend({
   }
 });
 </script>
+
+<style module>
+.markdown > p > img {
+  width: 300px;
+}
+</style>
