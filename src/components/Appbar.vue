@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-app-bar app flat clipped-right color="rgb(161, 172, 221)">
+    <v-app-bar app flat clipped-right color="rgb(107, 173, 159)">
       <v-spacer></v-spacer>
       <v-toolbar-title></v-toolbar-title>
       <v-spacer></v-spacer>
@@ -81,7 +81,6 @@ export default Vue.extend({
 .sidebar {
   width: 100%;
   height: 100%;
-  background-color: rgb(246, 248, 253);
-  color: rgb(161, 172, 221);
+  background-color: rgb(245, 247, 246);
 }
 </style>

@@ -1,6 +1,6 @@
 <template>
-  <v-container style="height: 100%">
-    <v-layout justify-end style="height: 100%">
+  <v-container>
+    <v-layout justify-end>
       <v-flex lg10 sm12 :class="$style.index">
         <div v-for="post in posts" :key="post.id">
           <PostTitle :post="post"></PostTitle>
@@ -34,7 +34,6 @@ export default Vue.extend({
 
 <style module>
 .index {
-  height: 100%;
   background-color: rgb(255, 255, 255);
 }
 </style>

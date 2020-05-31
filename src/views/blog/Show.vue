@@ -2,7 +2,7 @@
   <v-container>
     <v-layout>
       <v-flex lg2></v-flex>
-      <v-flex lg10 sm12>
+      <v-flex lg10 sm12 :class="$style.show">
         <Markdown :body="post.content"></Markdown>
       </v-flex>
     </v-layout>
@@ -32,3 +32,11 @@ export default Vue.extend({
   }
 });
 </script>
+
+<style module>
+.show {
+  height: 100%;
+  padding: 10px;
+  background-color: rgb(255, 255, 255);
+}
+</style>

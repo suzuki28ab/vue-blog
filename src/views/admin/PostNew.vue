@@ -34,10 +34,10 @@ export default Vue.extend({
           createdAt: new Date()
         })
         .then(function() {
-          console.log("Document successfully written!");
+          alert("Document successfully written!");
         })
         .catch(function(error) {
-          console.error("Error writing document: ", error);
+          alert(error);
         });
     },
     imgAdd: function(pos, $file) {

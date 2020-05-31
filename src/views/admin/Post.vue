@@ -3,14 +3,16 @@
     <v-simple-table>
       <thead>
         <tr>
-          <th>test</th>
-          <th>test2</th>
+          <th>id</th>
+          <th>title</th>
+          <th>catevory</th>
         </tr>
       </thead>
       <tbody v-for="post in posts" :key="post.id">
         <tr>
           <td>{{ post.id }}</td>
-          <td>{{ post.content }}</td>
+          <td>{{ post.title }}</td>
+          <td>{{ post.category }}</td>
         </tr>
       </tbody>
     </v-simple-table>

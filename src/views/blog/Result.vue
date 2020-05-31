@@ -1,7 +1,7 @@
 <template>
   <v-container>
     <v-layout justify-end>
-      <v-flex lg10 sm12>
+      <v-flex lg10 sm12 :class="$style.result">
         <div v-for="post in posts" :key="post.id">
           <PostTitle :post="post"></PostTitle>
         </div>
@@ -60,3 +60,9 @@ export default Vue.extend({
   }
 });
 </script>
+
+<style module>
+.result {
+  background-color: rgb(255, 255, 255);
+}
+</style>

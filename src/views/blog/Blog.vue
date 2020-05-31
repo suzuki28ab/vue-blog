@@ -30,6 +30,6 @@ export default Vue.extend({
 .back {
   width: 100%;
   height: 100%;
-  background-color: rgb(246, 248, 253);
+  background-color: rgb(245, 247, 246);
 }
 </style>
