@@ -5,7 +5,7 @@
         <tr>
           <th>id</th>
           <th>title</th>
-          <th>catevory</th>
+          <th>category</th>
         </tr>
       </thead>
       <tbody v-for="post in posts" :key="post.id">
