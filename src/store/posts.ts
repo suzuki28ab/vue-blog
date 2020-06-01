@@ -12,7 +12,7 @@ export const posts = {
   },
   actions: {
     getPosts({ commit }) {
-      db.collection("posts").get()
+      db.collection("posts").orderBy('createdAt', 'desc').get()
         .then(snapshot => {
           snapshot.forEach(doc => {
             const id = doc.id
