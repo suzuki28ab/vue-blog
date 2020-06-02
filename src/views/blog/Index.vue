@@ -34,6 +34,7 @@ export default Vue.extend({
 
 <style module>
 .index {
+  padding: 10px;
   background-color: rgb(255, 255, 255);
 }
 </style>

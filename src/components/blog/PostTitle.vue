@@ -32,7 +32,6 @@ export default Vue.extend({
 .title {
   cursor: pointer;
   margin-bottom: 50px;
-  padding: 0 10px;
 }
 
 .caption > span {

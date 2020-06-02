@@ -1,8 +1,8 @@
 <template>
   <v-container>
-    <v-layout>
-      <v-flex lg2></v-flex>
+    <v-layout justify-end>
       <v-flex lg10 sm12 :class="$style.show">
+        <PostTitle :post="post"></PostTitle>
         <Markdown :body="post.content"></Markdown>
       </v-flex>
     </v-layout>
@@ -11,6 +11,7 @@
 
 <script lang="ts">
 import Vue from "vue";
+import PostTitle from "@/components/blog/PostTitle";
 import Markdown from "@/components/blog/Markdown";
 import { db } from "@/plugins/firebase";
 
@@ -28,6 +29,7 @@ export default Vue.extend({
       });
   },
   components: {
+    PostTitle,
     Markdown
   }
 });

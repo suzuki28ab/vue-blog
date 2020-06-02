@@ -2,9 +2,9 @@
   <div>
     <v-app-bar app flat clipped-right color="rgb(107, 173, 159)">
       <v-spacer></v-spacer>
-      <v-toolbar-title :class="$style.title">
-        <router-link :to="{ name: 'BlogIndex' }" tag="span">頭寒足熱魂</router-link>
-      </v-toolbar-title>
+      <router-link :to="{ name: 'BlogIndex' }">
+        <v-img src="../assets/zukan.svg"></v-img>
+      </router-link>
       <v-spacer></v-spacer>
       <v-app-bar-nav-icon @click="drawer = !drawer" class="d-md-none"></v-app-bar-nav-icon>
     </v-app-bar>
