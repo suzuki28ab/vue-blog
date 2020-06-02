@@ -2,35 +2,37 @@
   <div>
     <v-app-bar app flat clipped-right color="rgb(107, 173, 159)">
       <v-spacer></v-spacer>
-      <v-toolbar-title></v-toolbar-title>
+      <v-toolbar-title :class="$style.title">
+        <router-link :to="{ name: 'BlogIndex' }" tag="span">頭寒足熱魂</router-link>
+      </v-toolbar-title>
       <v-spacer></v-spacer>
-      <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
+      <v-app-bar-nav-icon @click="drawer = !drawer" class="d-md-none"></v-app-bar-nav-icon>
     </v-app-bar>
-    <v-navigation-drawer app right clipped v-model="drawer" mobile-break-point="960">
+    <v-navigation-drawer app right floating clipped v-model="drawer" mobile-break-point="960">
       <div :class="$style.sidebar">
         <v-list flat dense>
-          <v-subheader>カテゴリー</v-subheader>
+          <v-subheader class="font-weight-medium">カテゴリー</v-subheader>
           <v-divider></v-divider>
           <v-list-item
             v-for="category in categories"
-            :key="category.name"
-            :to="{ name: 'BlogResult', query: category.query }"
+            :key="category"
+            :to="{ name: 'BlogResult', query: { category: category } }"
           >
             <v-list-item-content>
-              <v-list-item-title v-text="category.name"></v-list-item-title>
+              <v-list-item-title v-text="category"></v-list-item-title>
             </v-list-item-content>
           </v-list-item>
         </v-list>
         <v-list flat dense>
-          <v-subheader>タグ</v-subheader>
+          <v-subheader class="font-weight-medium">タグ</v-subheader>
           <v-divider></v-divider>
           <v-list-item
             v-for="tag in tags"
-            :key="tag.name"
-            :to="{ name: 'BlogResult', query: tag.query }"
+            :key="tag"
+            :to="{ name: 'BlogResult', query: { tag: tag } }"
           >
             <v-list-item-content>
-              <v-list-item-title v-text="tag.name"></v-list-item-title>
+              <v-list-item-title v-text="tag"></v-list-item-title>
             </v-list-item-content>
           </v-list-item>
         </v-list>
@@ -55,22 +57,14 @@ export default Vue.extend({
       .get()
       .then(snapshot => {
         snapshot.forEach(doc => {
-          const categoryName = doc.data().name;
-          this.categories.push({
-            name: categoryName,
-            query: { category: categoryName }
-          });
+          this.categories.push(doc.data().name);
         });
       });
     db.collection("tags")
       .get()
       .then(snapshot => {
         snapshot.forEach(doc => {
-          const tagName = doc.data().name;
-          this.tags.push({
-            name: tagName,
-            query: { tag: tagName }
-          });
+          this.tags.push(doc.data().name);
         });
       });
   }
@@ -78,6 +72,12 @@ export default Vue.extend({
 </script>
 
 <style module>
+.title {
+  cursor: pointer;
+  color: rgb(98, 104, 101);
+  letter-spacing: 4px;
+  text-shadow: 0 0 1px rgb(7, 36, 22);
+}
 .sidebar {
   width: 100%;
   height: 100%;

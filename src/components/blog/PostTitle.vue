@@ -2,12 +2,12 @@
   <div :class="$style.title">
     <router-link :to="{ name: 'BlogShow', params: { id: post.id } }" tag="div">
       <div :class="$style.caption">
-        <span class="overline">{{ formatedDate }}</span>
-        <span class="overline">{{ post.category }}</span>
+        <span class="caption font-weight-medium">{{ formatedDate }}</span>
+        <span class="caption font-weight-medium">{{ post.category }}</span>
       </div>
-      <h3 class="title">{{ post.title }}</h3>
+      <h3 class="headline font-weight-bold">{{ post.title }}</h3>
       <div :class="$style.tags">
-        <v-chip x-small v-for="tag in post.tags" :key="tag">{{ tag }}</v-chip>
+        <v-chip small class="font-weight-medium" v-for="tag in post.tags" :key="tag">{{ tag }}</v-chip>
       </div>
     </router-link>
   </div>
@@ -30,14 +30,18 @@ export default Vue.extend({
 
 <style module>
 .title {
+  cursor: pointer;
   margin-bottom: 50px;
   padding: 0 10px;
 }
 
-.caption span {
+.caption > span {
   margin-right: 10px;
 }
 
+.tags {
+  margin-top: 5px;
+}
 .tags > span {
   margin-right: 5px;
 }
