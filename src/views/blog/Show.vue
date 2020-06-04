@@ -11,8 +11,8 @@
 
 <script lang="ts">
 import Vue from "vue";
-import PostTitle from "@/components/blog/PostTitle";
-import Markdown from "@/components/blog/Markdown";
+import PostTitle from "@/components/blog/PostTitle.vue";
+import Markdown from "@/components/blog/Markdown.vue";
 import { db } from "@/plugins/firebase";
 
 export default Vue.extend({

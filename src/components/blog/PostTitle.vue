@@ -14,12 +14,15 @@
 </template>
 
 <script lang="ts">
-import Vue from "vue";
+import Vue, { PropType } from "vue";
+import { PostData } from "@/types/post";
 import { formatTimeStamp } from "@/plugins/firebase";
 
 export default Vue.extend({
   name: "PostTitle",
-  props: ["post"],
+  props: {
+    post: Object as PropType<PostData>
+  },
   computed: {
     formatedDate() {
       return formatTimeStamp(this.post.createdAt);

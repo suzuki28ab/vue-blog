@@ -10,7 +10,9 @@ import marked from "marked";
 
 export default Vue.extend({
   name: "Markdown",
-  props: ["body"],
+  props: {
+    body: String
+  },
   methods: {
     compileMarkdown() {
       return marked(this.body);

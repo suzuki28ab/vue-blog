@@ -6,7 +6,7 @@
 
 <script lang="ts">
 import Vue from "vue";
-import Posts from "@/components/blog/Posts";
+import Posts from "@/components/blog/Posts.vue";
 
 export default Vue.extend({
   name: "Index",

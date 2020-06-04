@@ -10,7 +10,7 @@
 
 <script lang="ts">
 import Vue from "vue";
-import PostTitle from "@/components/blog/PostTitle";
+import PostTitle from "@/components/blog/PostTitle.vue";
 
 export default Vue.extend({
   name: "Posts",

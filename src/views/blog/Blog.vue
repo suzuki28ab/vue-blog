@@ -1,8 +1,8 @@
 <template>
   <div :class="$style.back">
     <Appbar></Appbar>
-    <div style="height: 100%">
-      <v-content style="height: 100%">
+    <div>
+      <v-content>
         <router-view></router-view>
       </v-content>
     </div>
@@ -11,15 +11,10 @@
 
 <script lang="ts">
 import Vue from "vue";
-import Appbar from "@/components/Appbar";
+import Appbar from "@/components/Appbar.vue";
 
 export default Vue.extend({
   name: "Blog",
-  methods: {
-    increment() {
-      this.$store.commit("test/increment");
-    }
-  },
   components: {
     Appbar
   }

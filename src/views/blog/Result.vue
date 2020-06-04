@@ -7,7 +7,7 @@
 <script lang="ts">
 import Vue from "vue";
 import { db } from "@/plugins/firebase";
-import Posts from "@/components/blog/Posts";
+import Posts from "@/components/blog/Posts.vue";
 import { PostData } from "@/types/post";
 
 export default Vue.extend({
