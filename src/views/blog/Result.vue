@@ -1,19 +1,14 @@
 <template>
   <v-container>
-    <v-layout justify-end>
-      <v-flex lg10 sm12 :class="$style.result">
-        <div v-for="post in posts" :key="post.id">
-          <PostTitle :post="post"></PostTitle>
-        </div>
-      </v-flex>
-    </v-layout>
+    <Posts :posts="posts"></Posts>
   </v-container>
 </template>
 
 <script lang="ts">
 import Vue from "vue";
 import { db } from "@/plugins/firebase";
-import PostTitle from "@/components/blog/PostTitle";
+import Posts from "@/components/blog/Posts";
+import { PostData } from "@/types/post";
 
 export default Vue.extend({
   name: "Result",
@@ -32,9 +27,9 @@ export default Vue.extend({
           .get()
           .then(snapshot => {
             snapshot.forEach(doc => {
-              const id = doc.id;
-              const { title, content, createdAt } = doc.data();
-              this.posts.push({ id, title, content, createdAt });
+              const post: PostData = doc.data();
+              post.id = doc.id;
+              this.posts.push(post);
             });
           });
       } else if (query.tag) {
@@ -43,16 +38,16 @@ export default Vue.extend({
           .get()
           .then(snapshot => {
             snapshot.forEach(doc => {
-              const id = doc.id;
-              const { title, content, createdAt } = doc.data();
-              this.posts.push({ id, title, content, createdAt });
+              const post: PostData = doc.data();
+              post.id = doc.id;
+              this.posts.push(post);
             });
           });
       }
     }
   },
   components: {
-    PostTitle
+    Posts
   },
   beforeRouteUpdate(to, from, next) {
     this.getPosts(to.query);
@@ -60,9 +55,3 @@ export default Vue.extend({
   }
 });
 </script>
-
-<style module>
-.result {
-  background-color: rgb(255, 255, 255);
-}
-</style>

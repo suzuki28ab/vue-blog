@@ -1,5 +1,5 @@
 <template>
-  <div>admintopdayo</div>
+  <div>admintop</div>
 </template>
 
 <script lang="ts">

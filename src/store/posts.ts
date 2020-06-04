@@ -1,4 +1,5 @@
 import { db } from "@/plugins/firebase";
+import { PostData } from "@/types/post";
 
 export const posts = {
   namespaced: true,
@@ -15,9 +16,9 @@ export const posts = {
       db.collection("posts").orderBy('createdAt', 'desc').get()
         .then(snapshot => {
           snapshot.forEach(doc => {
-            const id = doc.id
-            const { title, category, tags, content, createdAt } = doc.data()
-            commit("setPosts", { id, title, category, tags, content, createdAt })
+            const post: PostData = doc.data();
+            post.id = doc.id
+            commit("setPosts", post)
           })
         });
     }

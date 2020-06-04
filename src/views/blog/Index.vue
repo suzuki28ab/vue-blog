@@ -1,18 +1,12 @@
 <template>
   <v-container>
-    <v-layout justify-end>
-      <v-flex lg10 sm12 :class="$style.index">
-        <div v-for="post in posts" :key="post.id">
-          <PostTitle :post="post"></PostTitle>
-        </div>
-      </v-flex>
-    </v-layout>
+    <Posts :posts="posts"></Posts>
   </v-container>
 </template>
 
 <script lang="ts">
 import Vue from "vue";
-import PostTitle from "@/components/blog/PostTitle";
+import Posts from "@/components/blog/Posts";
 
 export default Vue.extend({
   name: "Index",
@@ -27,14 +21,7 @@ export default Vue.extend({
     }
   },
   components: {
-    PostTitle
+    Posts
   }
 });
 </script>
-
-<style module>
-.index {
-  padding: 10px;
-  background-color: rgb(255, 255, 255);
-}
-</style>

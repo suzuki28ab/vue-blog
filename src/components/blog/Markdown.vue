@@ -20,7 +20,7 @@ export default Vue.extend({
 </script>
 
 <style module>
-.markdown > p > img {
-  width: 300px;
+.markdown img {
+  width: 90%;
 }
 </style>

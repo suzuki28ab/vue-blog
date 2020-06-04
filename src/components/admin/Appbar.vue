@@ -4,7 +4,6 @@
       <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
       <v-spacer></v-spacer>
       <v-toolbar-items>
-        <v-btn text>Button</v-btn>
         <v-btn text :to="{ name: 'BlogIndex' }">サイトへ</v-btn>
       </v-toolbar-items>
     </v-app-bar>
