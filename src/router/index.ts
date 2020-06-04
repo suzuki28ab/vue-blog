@@ -2,7 +2,6 @@ import Vue from "vue";
 import VueRouter from "vue-router";
 import { auth } from "@/plugins/firebase";
 import NotFound from "../views/NotFound.vue";
-import Home from "../views/Home.vue";
 import Blog from "../views/blog/Blog.vue";
 import BlogIndex from "../views/blog/Index.vue";
 

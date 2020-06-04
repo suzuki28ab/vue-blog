@@ -2,8 +2,8 @@
   <div>
     <v-app-bar app flat clipped-right color="rgb(107, 173, 159)">
       <v-spacer></v-spacer>
-      <router-link :to="{ name: 'BlogIndex' }">
-        <v-img src="../assets/zukan.svg"></v-img>
+      <router-link :to="{ name: 'BlogIndex' }" :class="$style.logo">
+        <v-img src="../assets/zukan.svg" contain></v-img>
       </router-link>
       <v-spacer></v-spacer>
       <v-app-bar-nav-icon @click="drawer = !drawer" class="d-md-none"></v-app-bar-nav-icon>
@@ -54,6 +54,7 @@ export default Vue.extend({
   }),
   created() {
     db.collection("categories")
+      .orderBy("name", "asc")
       .get()
       .then(snapshot => {
         snapshot.forEach(doc => {
@@ -61,6 +62,7 @@ export default Vue.extend({
         });
       });
     db.collection("tags")
+      .orderBy("name", "asc")
       .get()
       .then(snapshot => {
         snapshot.forEach(doc => {
@@ -76,5 +78,8 @@ export default Vue.extend({
   width: 100%;
   height: 100%;
   background-color: rgb(245, 247, 246);
+}
+.logo {
+  max-width: 90%;
 }
 </style>
