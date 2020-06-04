@@ -72,12 +72,6 @@ export default Vue.extend({
 </script>
 
 <style module>
-.title {
-  cursor: pointer;
-  color: rgb(98, 104, 101);
-  letter-spacing: 4px;
-  text-shadow: 0 0 1px rgb(7, 36, 22);
-}
 .sidebar {
   width: 100%;
   height: 100%;

@@ -1,11 +1,9 @@
 <template>
   <div :class="$style.back">
     <Appbar></Appbar>
-    <div>
-      <v-content>
-        <router-view></router-view>
-      </v-content>
-    </div>
+    <v-content>
+      <router-view></router-view>
+    </v-content>
   </div>
 </template>
 

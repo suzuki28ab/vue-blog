@@ -36,15 +36,18 @@ export default Vue.extend({
   cursor: pointer;
   margin-bottom: 50px;
 }
-
 .caption > span {
   margin-right: 10px;
 }
-
 .tags {
   margin-top: 5px;
 }
 .tags > span {
+  background: rgb(107, 173, 159) !important;
   margin-right: 5px;
+}
+.tags > span > span {
+  background-color: rgb(107, 173, 159);
+  color: #fff;
 }
 </style>
