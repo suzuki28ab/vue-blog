@@ -23,48 +23,48 @@ const routes = [
   {
     path: "/login",
     name: "Login",
-    component: loadView('Login')
+    component: loadView("Login")
   },
   {
     path: "/blog",
     component: Blog,
     children: [
       {
-        path: '',
+        path: "",
         name: "BlogIndex",
         component: BlogIndex
       },
       {
-        path: 'result',
+        path: "result",
         name: "BlogResult",
-        component: loadView('blog/Result')
+        component: loadView("blog/Result")
       },
       {
         path: ":id",
         name: "BlogShow",
-        component: loadView('blog/Show')
+        component: loadView("blog/Show")
       }
     ]
   },
   {
     path: "/admin",
-    component: loadView('admin/Admin'),
+    component: loadView("admin/Admin"),
     meta: { requiresAuth: true },
     children: [
       {
-        path: '',
+        path: "",
         name: "AdminTop",
-        component: loadView('admin/Top')
+        component: loadView("admin/Top")
       },
       {
-        path: 'post',
+        path: "post",
         name: "AdminPost",
-        component: loadView('admin/Post')
+        component: loadView("admin/Post")
       },
       {
-        path: 'post_new',
+        path: "post_new",
         name: "AdminPostNew",
-        component: loadView('admin/PostNew')
+        component: loadView("admin/PostNew")
       }
     ]
   }
@@ -78,15 +78,15 @@ const router = new VueRouter({
 
 router.beforeEach((to, from, next) => {
   if (to.matched.some(record => record.meta.requiresAuth)) {
-    auth.onAuthStateChanged((user) => {
+    auth.onAuthStateChanged(user => {
       if (user) {
-        next()
+        next();
       } else {
-        next({ path: '/login' })
+        next({ path: "/login" });
       }
-    })
+    });
   } else {
-    next()
+    next();
   }
 });
 

@@ -4,7 +4,11 @@
       <v-row justify="center" align="center">
         <v-col cols="12" md="6">
           <v-text-field label="email" v-model="email"></v-text-field>
-          <v-text-field label="password" type="password" v-model="password"></v-text-field>
+          <v-text-field
+            label="password"
+            type="password"
+            v-model="password"
+          ></v-text-field>
           <v-btn @click="login">login</v-btn>
         </v-col>
       </v-row>

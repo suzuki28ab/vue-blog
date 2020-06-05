@@ -7,7 +7,13 @@
       </div>
       <h3 class="headline font-weight-bold">{{ post.title }}</h3>
       <div :class="$style.tags">
-        <v-chip small class="font-weight-medium" v-for="tag in post.tags" :key="tag">{{ tag }}</v-chip>
+        <v-chip
+          small
+          class="font-weight-medium"
+          v-for="tag in post.tags"
+          :key="tag"
+          >{{ tag }}</v-chip
+        >
       </div>
     </router-link>
   </div>

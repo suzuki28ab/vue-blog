@@ -1,9 +1,19 @@
 <template>
   <v-container>
     <v-text-field label="title" v-model="title"></v-text-field>
-    <v-select :items="categories" v-model="category" label="category"></v-select>
+    <v-select
+      :items="categories"
+      v-model="category"
+      label="category"
+    ></v-select>
     <v-select :items="tagList" v-model="tags" label="tags" multiple></v-select>
-    <mavon-editor language="ja" v-model="content" @imgAdd="imgAdd" ref="md" :class="$style.editor"></mavon-editor>
+    <mavon-editor
+      language="ja"
+      v-model="content"
+      @imgAdd="imgAdd"
+      ref="md"
+      :class="$style.editor"
+    ></mavon-editor>
     <v-btn @click="save" :class="$style.save">save</v-btn>
   </v-container>
 </template>

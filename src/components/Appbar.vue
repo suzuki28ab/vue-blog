@@ -6,9 +6,19 @@
         <v-img src="../assets/zukan.svg" contain></v-img>
       </router-link>
       <v-spacer></v-spacer>
-      <v-app-bar-nav-icon @click="drawer = !drawer" class="d-md-none"></v-app-bar-nav-icon>
+      <v-app-bar-nav-icon
+        @click="drawer = !drawer"
+        class="d-md-none"
+      ></v-app-bar-nav-icon>
     </v-app-bar>
-    <v-navigation-drawer app right floating clipped v-model="drawer" mobile-break-point="960">
+    <v-navigation-drawer
+      app
+      right
+      floating
+      clipped
+      v-model="drawer"
+      mobile-break-point="960"
+    >
       <div :class="$style.sidebar">
         <v-list flat dense>
           <v-subheader class="font-weight-medium">カテゴリー</v-subheader>
