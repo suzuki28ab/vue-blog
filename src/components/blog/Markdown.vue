@@ -25,4 +25,7 @@ export default Vue.extend({
 .markdown img {
   width: 90%;
 }
+.markdown h3 {
+  margin-top: 30px;
+}
 </style>
