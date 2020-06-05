@@ -42,9 +42,10 @@ export default Vue.extend({
       .then(snapshot => {
         snapshot.forEach(doc => {
           const post: PostData = doc.data() as PostData;
+          post.id = doc.id;
           this.posts.push(post);
         });
       });
-  },
+  }
 });
 </script>
