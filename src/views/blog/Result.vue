@@ -30,6 +30,7 @@ export default Vue.extend({
       if (query.category) {
         db.collection("posts")
           .where("category", "==", query.category)
+          .orderBy("createdAt", "desc")
           .get()
           .then(snapshot => {
             snapshot.forEach(doc => {
@@ -41,6 +42,7 @@ export default Vue.extend({
       } else if (query.tag) {
         db.collection("posts")
           .where("tags", "array-contains", query.tag)
+          .orderBy("createAt", "desc")
           .get()
           .then(snapshot => {
             snapshot.forEach(doc => {

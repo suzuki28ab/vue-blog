@@ -23,7 +23,7 @@ export default Vue.extend({
   },
   created() {
     db.collection("posts")
-      .orderBy("createdAt", "asc")
+      .orderBy("createdAt", "desc")
       .get()
       .then(snapshot => {
         snapshot.forEach(doc => {
