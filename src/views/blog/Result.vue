@@ -10,16 +10,22 @@ import { db } from "@/plugins/firebase";
 import Posts from "@/components/blog/Posts.vue";
 import { PostData } from "@/types/post";
 
+export type DataType = {
+  posts: PostData[];
+};
+
 export default Vue.extend({
   name: "Result",
-  data: () => ({
-    posts: []
-  }),
+  data(): DataType {
+    return {
+      posts: []
+    };
+  },
   mounted() {
     this.getPosts(this.$route.query);
   },
   methods: {
-    getPosts: function(query) {
+    getPosts: function(query: any) {
       this.posts = [];
       if (query.category) {
         db.collection("posts")
@@ -27,7 +33,7 @@ export default Vue.extend({
           .get()
           .then(snapshot => {
             snapshot.forEach(doc => {
-              const post: PostData = doc.data();
+              const post: PostData = doc.data() as PostData;
               post.id = doc.id;
               this.posts.push(post);
             });
@@ -38,7 +44,7 @@ export default Vue.extend({
           .get()
           .then(snapshot => {
             snapshot.forEach(doc => {
-              const post: PostData = doc.data();
+              const post: PostData = doc.data() as PostData;
               post.id = doc.id;
               this.posts.push(post);
             });

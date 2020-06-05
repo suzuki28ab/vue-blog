@@ -13,7 +13,12 @@
 import Vue from "vue";
 import PostTitle from "@/components/blog/PostTitle.vue";
 import Markdown from "@/components/blog/Markdown.vue";
+import { PostData } from "@/types/post";
 import { db } from "@/plugins/firebase";
+
+export type DataType = {
+  post: PostData;
+};
 
 export default Vue.extend({
   name: "BlogShow",
@@ -25,7 +30,7 @@ export default Vue.extend({
       .doc(this.$route.params.id)
       .get()
       .then(doc => {
-        this.post = doc.data();
+        this.post = doc.data() as PostData;
       });
   },
   components: {

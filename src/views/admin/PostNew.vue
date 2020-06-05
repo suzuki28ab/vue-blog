@@ -13,16 +13,27 @@ import Vue from "vue";
 import "@/plugins/mavon-editor";
 import { db, storage } from "@/plugins/firebase";
 
+export type DataType = {
+  title: string;
+  content: string;
+  categories: string[];
+  tagList: string[];
+  category: string;
+  tags: string[];
+};
+
 export default Vue.extend({
   name: "PostNew",
-  data: () => ({
-    title: "",
-    content: "",
-    categories: [],
-    tagList: [],
-    category: "",
-    tags: []
-  }),
+  data(): DataType {
+    return {
+      title: "",
+      content: "",
+      categories: [],
+      tagList: [],
+      category: "",
+      tags: []
+    };
+  },
   methods: {
     save: function() {
       db.collection("posts")
@@ -40,7 +51,7 @@ export default Vue.extend({
           alert(error);
         });
     },
-    imgAdd: function(pos, $file) {
+    imgAdd: function(pos: any, $file: any) {
       const storageRef = storage.ref();
       const fileRef = storageRef.child($file.name);
       fileRef
@@ -50,7 +61,7 @@ export default Vue.extend({
         })
         .then(url => {
           console.log(url);
-          this.$refs.md.$img2Url(pos, url);
+          (this as any).$refs.md.$img2Url(pos, url);
           return url;
         });
     }

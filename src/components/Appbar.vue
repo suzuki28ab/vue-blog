@@ -45,13 +45,21 @@
 import Vue from "vue";
 import { db } from "@/plugins/firebase";
 
+export type DataType = {
+  drawer: null;
+  categories: string[];
+  tags: string[];
+};
+
 export default Vue.extend({
   name: "Header",
-  data: () => ({
-    drawer: null,
-    categories: [],
-    tags: []
-  }),
+  data(): DataType {
+    return {
+      drawer: null,
+      categories: [],
+      tags: []
+    };
+  },
   created() {
     db.collection("categories")
       .orderBy("name", "asc")

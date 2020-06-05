@@ -7,18 +7,30 @@
 <script lang="ts">
 import Vue from "vue";
 import Posts from "@/components/blog/Posts.vue";
+import { db } from "@/plugins/firebase";
+import { PostData } from "@/types/post";
+
+export type DataType = {
+  posts: PostData[];
+};
 
 export default Vue.extend({
   name: "Index",
-  computed: {
-    posts() {
-      return this.$store.state.posts.posts;
-    }
+  data(): DataType {
+    return {
+      posts: []
+    };
   },
   created() {
-    if (this.$store.state.posts.posts.length == 0) {
-      this.$store.dispatch("posts/getPosts");
-    }
+    db.collection("posts")
+      .orderBy("createdAt", "asc")
+      .get()
+      .then(snapshot => {
+        snapshot.forEach(doc => {
+          const post: PostData = doc.data() as PostData;
+          this.posts.push(post);
+        });
+      });
   },
   components: {
     Posts

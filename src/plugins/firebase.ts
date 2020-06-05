@@ -19,7 +19,12 @@ const auth = firebase.auth();
 const db = app.firestore();
 const storage = firebase.storage();
 
-const formatTimeStamp = (timestamp) => {
+export interface Timestamp {
+  seconds: number,
+  nanoseconds: number
+}
+
+const formatTimeStamp = (timestamp: Timestamp) => {
   const d = new Date(timestamp.seconds * 1000);
   const year = d.getFullYear();
   const month = (`0${d.getMonth() + 1}`).slice(-2);
