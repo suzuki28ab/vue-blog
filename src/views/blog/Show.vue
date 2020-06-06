@@ -30,7 +30,9 @@ export default Vue.extend({
       .doc(this.$route.params.id)
       .get()
       .then(doc => {
-        this.post = doc.data() as PostData;
+        const post = doc.data() as PostData;
+        post.id = doc.id;
+        this.post = post;
       });
   },
   components: {

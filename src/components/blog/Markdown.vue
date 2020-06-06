@@ -30,5 +30,9 @@ export default Vue.extend({
 }
 .markdown h3 {
   margin-top: 30px;
+  margin-bottom: 10px;
+}
+.markdown h4 {
+  margin: 10px 0;
 }
 </style>
