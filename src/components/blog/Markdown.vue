@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div v-highlight>
     <div v-html="compileMarkdown()" :class="$style.markdown"></div>
   </div>
 </template>
@@ -7,6 +7,12 @@
 <script lang="ts">
 import Vue from "vue";
 import marked from "marked";
+
+import "vue-code-highlight/themes/prism-coy.css";
+
+import "prism-es6/components/prism-markup-templating";
+import "prism-es6/components/prism-json";
+import "prism-es6/components/prism-yaml";
 
 export default Vue.extend({
   name: "Markdown",
@@ -34,5 +40,11 @@ export default Vue.extend({
 }
 .markdown h4 {
   margin: 10px 0;
+}
+.markdown hr {
+  margin: 30px 0;
+}
+.markdown code {
+  box-shadow: 0 0;
 }
 </style>
