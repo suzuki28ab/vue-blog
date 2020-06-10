@@ -34,3 +34,7 @@ jobs:
         firebase deploy --token $FIREBASE_TOKEN
       env:
         FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
+    - name: Discord Notifier
+      uses: binotaliu/action-discord-notifier@v1.2.0
+      with:
+        webhook: https://discordapp.com/api/webhooks/720245173728182332/LpUSfwUkQsNkjYTrgG0axQb0QEju99PJjj8YhnheVOMJiC1fzUPjfYJFlnrxdKtnkMSW
