@@ -97,7 +97,6 @@ export default Vue.extend({
           return snapshot.ref.getDownloadURL();
         })
         .then(url => {
-          console.log(url);
           (this as any).$refs.md.$img2Url(pos, url);
           return url;
         });
