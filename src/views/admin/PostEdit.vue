@@ -14,6 +14,7 @@
 import Vue from "vue";
 import "@/plugins/mavon-editor";
 import { db } from "@/plugins/firebase";
+import { PostData } from "@/types/post";
 
 import PostInput from "@/components/admin/PostInput.vue";
 
@@ -22,27 +23,43 @@ export type DataType = {
   content: string;
   category: string;
   tags: string[];
+  post: PostData;
 };
 
 export default Vue.extend({
-  name: "PostNew",
+  name: "PostEdit",
   data(): DataType {
     return {
       title: "",
       content: "",
       category: "",
-      tags: []
+      tags: [],
+      post: {} as PostData
     };
+  },
+  created() {
+    db.collection("posts")
+      .doc(this.$route.params.id)
+      .get()
+      .then(doc => {
+        const post = doc.data() as PostData;
+        post.id = doc.id;
+        this.post = post;
+        this.title = post.title;
+        this.content = post.content;
+        this.category = post.category;
+        this.tags = post.tags;
+      });
   },
   methods: {
     save: function() {
       db.collection("posts")
-        .add({
+        .doc(this.$route.params.id)
+        .update({
           title: this.title,
           content: this.content,
           category: this.category,
-          tags: this.tags,
-          createdAt: new Date()
+          tags: this.tags
         })
         .then(function() {
           alert("Document successfully written!");

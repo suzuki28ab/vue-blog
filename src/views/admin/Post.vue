@@ -1,21 +1,10 @@
 <template>
   <v-container>
-    <v-simple-table>
-      <thead>
-        <tr>
-          <th>id</th>
-          <th>title</th>
-          <th>category</th>
-        </tr>
-      </thead>
-      <tbody v-for="post in posts" :key="post.id">
-        <tr>
-          <td>{{ post.id }}</td>
-          <td>{{ post.title }}</td>
-          <td>{{ post.category }}</td>
-        </tr>
-      </tbody>
-    </v-simple-table>
+    <v-data-table :headers="headers" :items="posts">
+      <template v-slot:item.title="{ item }">
+        <router-link :to="{ name: 'AdminPostEdit', params: {id: item.id} }">{{ item.title }}</router-link>
+      </template>
+    </v-data-table>
   </v-container>
 </template>
 
@@ -26,18 +15,29 @@ import { PostData } from "@/types/post";
 
 export type DataType = {
   posts: PostData[];
+  headers: object[];
 };
 
 export default Vue.extend({
   name: "Post",
   data(): DataType {
     return {
-      posts: []
+      posts: [],
+      headers: [
+        {
+          text: "title",
+          value: "title"
+        },
+        {
+          text: "category",
+          value: "category"
+        }
+      ]
     };
   },
   created() {
     db.collection("posts")
-      .orderBy("createdAt", "asc")
+      .orderBy("createdAt", "desc")
       .get()
       .then(snapshot => {
         snapshot.forEach(doc => {
