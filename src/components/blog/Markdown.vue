@@ -13,6 +13,7 @@ import "vue-code-highlight/themes/prism-coy.css";
 import "prism-es6/components/prism-markup-templating";
 import "prism-es6/components/prism-json";
 import "prism-es6/components/prism-yaml";
+import "prism-es6/components/prism-bash";
 
 export default Vue.extend({
   name: "Markdown",
