@@ -20,6 +20,14 @@ export default Vue.extend({
   props: {
     body: String
   },
+  updated() {
+    const aTags = document.getElementsByTagName("a");
+    for (const aTag of aTags) {
+      if (aTag.hostname != location.hostname) {
+        aTag.setAttribute("target", "_blank");
+      }
+    }
+  },
   methods: {
     compileMarkdown() {
       return marked(this.body);

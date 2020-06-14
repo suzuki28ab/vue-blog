@@ -47,6 +47,7 @@ export default Vue.extend({
   margin-right: 5px;
 }
 .tags > span > span {
+  cursor: pointer;
   background-color: rgb(107, 173, 159);
   color: #fff;
 }
