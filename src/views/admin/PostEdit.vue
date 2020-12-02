@@ -46,10 +46,10 @@ export default Vue.extend({
       .get()
       .then((doc) => {
         const post = doc.data() as PostData;
+        this.id = post.id;
         post.id = doc.id;
         this.post = post;
         this.title = post.title;
-        this.id = post.id;
         this.content = post.content;
         this.category = post.category;
         this.tags = post.tags;
