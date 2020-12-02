@@ -2,6 +2,7 @@
   <v-container>
     <PostInput
       :title.sync="title"
+      :id.sync="id"
       :content.sync="content"
       :category.sync="category"
       :tags.sync="tags"
@@ -19,6 +20,7 @@ import PostInput from "@/components/admin/PostInput.vue";
 
 export type DataType = {
   title: string;
+  id: string;
   content: string;
   category: string;
   tags: string[];
@@ -29,32 +31,34 @@ export default Vue.extend({
   data(): DataType {
     return {
       title: "",
+      id: "",
       content: "",
       category: "",
-      tags: []
+      tags: [],
     };
   },
   methods: {
-    save: function() {
+    save: function () {
       db.collection("posts")
         .add({
           title: this.title,
+          id: this.id,
           content: this.content,
           category: this.category,
           tags: this.tags,
-          createdAt: new Date()
+          createdAt: new Date(),
         })
-        .then(function() {
+        .then(function () {
           alert("Document successfully written!");
         })
-        .catch(function(error) {
+        .catch(function (error) {
           alert(error);
         });
-    }
+    },
   },
   components: {
-    PostInput
-  }
+    PostInput,
+  },
 });
 </script>
 

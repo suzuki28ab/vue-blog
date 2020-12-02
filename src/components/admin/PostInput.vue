@@ -1,8 +1,18 @@
 <template>
   <div>
     <v-text-field label="title" v-model="inputTitle"></v-text-field>
-    <v-select :items="categories" v-model="inputCategory" label="category"></v-select>
-    <v-select :items="tagList" v-model="inputTags" label="tags" multiple></v-select>
+    <v-text-field label="id" v-model="inputId"></v-text-field>
+    <v-select
+      :items="categories"
+      v-model="inputCategory"
+      label="category"
+    ></v-select>
+    <v-select
+      :items="tagList"
+      v-model="inputTags"
+      label="tags"
+      multiple
+    ></v-select>
     <mavon-editor
       language="ja"
       v-model="inputContent"
@@ -28,80 +38,88 @@ export default Vue.extend({
   data(): DataType {
     return {
       categories: [],
-      tagList: []
+      tagList: [],
     };
   },
   props: {
     title: String,
     content: String,
     category: String,
-    tags: Array
+    tags: Array,
   },
   computed: {
     inputTitle: {
-      get: function(): string {
+      get: function (): string {
         return (this as any).title;
       },
-      set: function(value) {
+      set: function (value) {
         (this as any).$emit("update:title", value);
-      }
+      },
+    },
+    inputId: {
+      get: function (): string {
+        return (this as any).id;
+      },
+      set: function (value) {
+        (this as any).$emit("update:id", value);
+      },
     },
     inputContent: {
-      get: function(): string {
+      get: function (): string {
         return (this as any).content;
       },
-      set: function(value) {
+      set: function (value) {
         (this as any).$emit("update:content", value);
-      }
+      },
     },
     inputCategory: {
-      get: function(): string {
+      get: function (): string {
         return (this as any).category;
       },
-      set: function(value) {
+      set: function (value) {
         (this as any).$emit("update:category", value);
-      }
+      },
     },
     inputTags: {
-      get: function(): string {
+      get: function (): string {
         return (this as any).tags;
       },
-      set: function(value) {
+      set: function (value) {
         (this as any).$emit("update:tags", value);
-      }
-    }
+      },
+    },
   },
   created() {
     db.collection("categories")
       .get()
-      .then(snapshot => {
-        snapshot.forEach(doc => {
+      .then((snapshot) => {
+        snapshot.forEach((doc) => {
           (this as any).categories.push(doc.data().name);
         });
       });
     db.collection("tags")
       .get()
-      .then(snapshot => {
-        snapshot.forEach(doc => {
+      .then((snapshot) => {
+        snapshot.forEach((doc) => {
           (this as any).tagList.push(doc.data().name);
         });
       });
   },
   methods: {
-    imgAdd: function(pos: any, $file: any) {
+    imgAdd: function (pos: any, $file: any) {
       const storageRef = storage.ref();
       const fileRef = storageRef.child($file.name);
       fileRef
         .put($file)
-        .then(snapshot => {
+        .then((snapshot) => {
           return snapshot.ref.getDownloadURL();
         })
-        .then(url => {
+        .then((url) => {
           (this as any).$refs.md.$img2Url(pos, url);
           return url;
         });
-    }
-  }
+    },
+  },
 });
 </script>
 
