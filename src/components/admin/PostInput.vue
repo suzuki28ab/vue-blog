@@ -43,6 +43,7 @@ export default Vue.extend({
   },
   props: {
     title: String,
+    id: String,
     content: String,
     category: String,
     tags: Array,
